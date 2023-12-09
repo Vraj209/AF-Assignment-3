@@ -1,0 +1,52 @@
+
+
+type Query {
+  getAllEmployees(filter:String): [Employee]
+  getEmployeeById(id: Int): Employee
+  getRetireEmployee: [Employee]
+}
+
+type Mutation {
+  createNewEmployee(emp: EmployeeInput!): Employee
+  updateEmployeeById(emp: EmployeeInput): Employee
+  deleteEmployeeById(id: Int) : Int
+}
+
+type Employee {
+  id:Int
+  FirstName: String!
+  LastName: String!
+  Age: Int!
+  DateOfJoining: String!
+  Title: String!
+  Department: String!
+  EmployeeType: String! 
+  CurrentStatus: String!
+ 
+}
+input EmployeeInput {
+  id:Int
+  FirstName: String!
+  LastName: String!
+  Age: Int!
+  DateOfJoining: String!
+  Title: String!
+  Department: String!
+  EmployeeType: String!
+  CurrentStatus: String!
+}
+
+type EmployeeDetails {
+  id:Int
+  FirstName: String!
+  LastName: String!
+  Age: Int!
+  DateOfJoining: String!
+  Title: String!
+  Department: String!
+  EmployeeType: String!
+  CurrentStatus: String!
+  remainingDays: Int
+  remainingMonths: Int
+  remainingYears: Int
+}

@@ -1,0 +1,48 @@
+/* styles.css */
+
+/* Reset some default browser styles */
+body,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the navigation bar */
+nav {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+/* Style the logo container */
+.start-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Style the logo text */
+h2 {
+  margin: 0;
+}
+
+/* Style the navigation menu */
+ul {
+  list-style: none;
+  display: flex;
+}
+
+/* Style the navigation menu items */
+li {
+  margin-right: 15px;
+}
+
+/* Style the navigation links */
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Add hover effect on navigation links */
+a:hover {
+  border-bottom: 2px solid white;
+}

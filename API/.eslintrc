@@ -1,0 +1,16 @@
+// ESLint Configuration
+{
+    
+    "extends": "airbnb-base",
+    "env": {
+      "node": true
+    },
+    "rules": {   
+      "linebreak-style": "off",
+         "quotes": [
+        "warn", 
+        "double" 
+      ],
+      "no-console": "warn"
+    }
+  }
