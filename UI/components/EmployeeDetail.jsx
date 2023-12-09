@@ -17,12 +17,39 @@ class EmployeeDetail extends React.Component {
   async componentDidMount() {
     // get id route parameter
     const { id } = this.props.match.params;
-    console.log(typeof id);
 
     try {
       // returns employee with matching id from database
       const data = await EmployeeFunction.getEmployeeById(id);
-      // console.log(data, "------");
+      // Retirement age
+     // Retirement age
+    const retirementAge = 65;
+    const currentDate = new Date();
+
+    const dateOfJoining = new Date(data.DateOfJoining);
+
+    const retirementDate = new Date(dateOfJoining);
+    retirementDate.setFullYear(
+      retirementDate.getFullYear() + (retirementAge - data.Age)
+    );
+
+    const timeRemaining = retirementDate.getTime() - currentDate.getTime();
+
+    // calculate remaining days, months, and years
+    const remainingDays = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const remainingMonths = Math.floor(remainingDays / 30);
+    const remainingYears = Math.floor(remainingMonths / 12);
+
+    // calculate remaining days and months within the current year/month
+    const days = remainingDays % 30;
+    const months = remainingMonths % 12;
+
+    // add remaining time to employee data
+    data.remainingDays = days;
+    data.remainingMonths = months;
+    data.remainingYears = remainingYears;
+
+
       // update state
       this.setState({ emp: data });
     } catch (error) {
@@ -187,7 +214,7 @@ class EmployeeDetail extends React.Component {
                   type="number"
                   name="RetirementDay"
                   id="retirementDay"
-                  value={this.state.remainingDays}
+                  value={emp.remainingDays}
                   placeholder="Retirement Days"
                   disabled
                 />
@@ -201,7 +228,7 @@ class EmployeeDetail extends React.Component {
                   type="number"
                   name="RetirementMonth"
                   id="retirementMonth"
-                  value={this.state.remainingMonths}
+                  value={emp.remainingMonths}
                   placeholder="Retirement month"
                   disabled
                 />
@@ -215,7 +242,7 @@ class EmployeeDetail extends React.Component {
                   type="number"
                   name="RetirementYear"
                   id="retirementYear"
-                  value={this.state.remainingYears}
+                  value={emp.remainingYears}
                   placeholder="Retirement Year"
                   disabled
                 />
