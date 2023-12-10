@@ -1,4 +1,5 @@
 import React from "react";
+import { Table, Button } from 'react-bootstrap';
 
 export default class EmployeeTable extends React.Component {
   constructor(props) {
@@ -58,7 +59,7 @@ export default class EmployeeTable extends React.Component {
       <section style={containerStyle}>
         <h2 style={{ color: "green" }}>Employee List</h2>
         <div style={centeredTableStyle}>
-          <table style={tableStyle}>
+          <Table striped bordered hover>
             <thead>
               <tr>
                 {headerList.map((header, index) => (
@@ -83,33 +84,33 @@ export default class EmployeeTable extends React.Component {
                     <td style={cellStyle}>{emp && emp.CurrentStatus}</td>
                     <td className="actions" style={cellStyle}>
                       <a href={`/empEdit/${emp && emp.id}`} className="icon">
-                        <button
+                        <Button
                           className="update-btn"
                           style={{ ...buttonStyle, backgroundColor: "#2196F3" }}
                         >
                           Update
-                        </button>
+                        </Button>
                       </a>
 
-                      <button
+                      <Button
                         onClick={() => this.props.onDeleteClick(emp.id)}
                         style={{ ...buttonStyle, backgroundColor: "#f44336" }}
                       >
                         Delete
-                      </button>
+                      </Button>
                       <a href={`/empDetail/${emp && emp.id}`} className="icon">
-                        <button
+                        <Button
                           className="btn"
                           style={{ ...buttonStyle, backgroundColor: "#92A8D1" }}
                         >
                           View Details
-                        </button>
+                        </Button>
                       </a>
                     </td>
                   </tr>
                 ))}
             </tbody>
-          </table>
+          </Table>
         </div>
       </section>
     );

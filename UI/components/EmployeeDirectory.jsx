@@ -4,6 +4,7 @@ import EmployeeSearch from "./EmployeeSearch.jsx";
 import EmployeeTable from "./EmployeeTable.jsx";
 // import EmployeeFunction from "../server/EmployeeFunction";
 import EmployeeFunction from "../server/EmployeeFunction";
+import { Container, Table, Button } from 'react-bootstrap';
 
 // import EmployeeFunction from "../server/EmployeeFunction.js";
 
@@ -59,7 +60,7 @@ export default class EmployeeDirectory extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <EmployeeSearch
           onFilterChange={(filter) => this.onFilterChange(filter)}
         />
@@ -67,7 +68,7 @@ export default class EmployeeDirectory extends React.Component {
           employees={this.state.employees}
           onDeleteClick={(id) => this.onDeleteClick(id)}
         />
-      </React.Fragment>
+      </>
     );
   }
 }
